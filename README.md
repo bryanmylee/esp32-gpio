@@ -45,3 +45,13 @@ BLE can be used for:
 - IoT sensors
 - fitness bands
 - medical monitors
+
+# Button
+
+The button has two terminals. The lateral pins of the button are internally connected and make up one terminal per pair. The two terminals are only connected when the button is pressed.
+
+To detect button presses, we have to read a change in voltage.
+
+If we connect one terminal of the button to a GPIO and another to VIN or 3X3, then the GPIO will read LOW when the button is unpressed and HIGH when the button is pressed. **Ensure that a resistor lies in the circuit to prevent a short circuit**.
+
+If we connect one terminal of the button to a GPIO and another to ground, then the GPIO will always read LOW. To read HIGH when unpressed, we have to add another connection between VIN or 3X3 and the GPIO, **with a resistor in the circuit**. When the button is unpressed, the GPIO will read HIGH. When the button is pressed, the voltage will drain into ground and result in a LOW reading at the GPIO.
