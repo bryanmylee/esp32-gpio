@@ -1,11 +1,13 @@
 #include <Arduino.h>
 
+// Pin 4 refers to GPIO4.
+#define LED_PIN 4
+
 void setup()
 {
   // Configures the pin to behave either as an input or an output.
   //
-  // Pin 4 refers to GPIO4.
-  pinMode(4, OUTPUT);
+  pinMode(LED_PIN, OUTPUT);
 }
 
 void loop()
@@ -18,12 +20,12 @@ void loop()
   //
   // An internal pull-up allows the hardware to reliably use, for instance, a
   // switch between the pin and ground without an external resistor.
-  digitalWrite(4, HIGH);
+  digitalWrite(LED_PIN, HIGH);
 
   delay(1000);
 
   // Subsequently, set the voltage at GPIO4 to LOW.
-  digitalWrite(4, LOW);
+  digitalWrite(LED_PIN, LOW);
 
   delay(1000);
 }
