@@ -35,6 +35,7 @@ void setup()
   Serial.begin(9600);
 
   pinMode(BTN_STOP_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
 
   // Create the semaphore that informs us when the timer has fired.
   timerSemaphore = xSemaphoreCreateBinary();
@@ -69,6 +70,7 @@ void loop()
     portEXIT_CRITICAL(&timerMutex);
 
     Serial.printf("onTimer no. %d at %d ms\n", localIsrCount, localLastIsrAt);
+    digitalWrite(LED_PIN, localIsrCount % 2 == 0 ? HIGH : LOW);
   }
 
   // Check if the button is pressed.
