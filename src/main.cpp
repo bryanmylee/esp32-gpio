@@ -72,9 +72,10 @@ void loop()
   }
 
   // Check if the button is pressed.
-  if (digitalRead(BTN_STOP_PIN) == LOW)
+  // When pressed, the button should connect GPIO2 to 3V# or VIN through a resistor.
+  // Without a resistor, the circuit will short circuit, causing the ESP32 to blackout.
+  if (digitalRead(BTN_STOP_PIN) == HIGH)
   {
-    Serial.println("Pressed button");
     // If the timer is still running.
     if (timer)
     {
