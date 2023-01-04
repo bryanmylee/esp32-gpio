@@ -1,6 +1,6 @@
-# GPIO Pins
+# Learning ESP32
 
-Learning how to use the ESP32 Dev board.
+Learning how to use the ESP32 DevKit.
 
 Testing out hardware connections and using GPIO pins.
 
