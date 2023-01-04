@@ -24,3 +24,24 @@ Soft Access Point (AP) mode makes the ESP32 a router without a connection to the
 - Maximum of 5 clients
 
 Both modes allow ESP32 to act as a web server.
+
+# Bluetooth
+
+ESP32 has both classic Bluetooth and Bluetooth Low Energy (BLE).
+
+- It can act as a client and a server
+
+Classic Bluetooth can be used for:
+
+- continuous data streaming
+- wireless headsets
+- file transfers
+- wireless keyboards and mice
+- wireless speakers
+
+BLE can be used for:
+
+- short bursts of data
+- IoT sensors
+- fitness bands
+- medical monitors
