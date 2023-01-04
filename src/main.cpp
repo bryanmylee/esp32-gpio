@@ -1,29 +1,41 @@
 #include <Arduino.h>
+#include "WiFi.h"
 
 void setup()
 {
-  // Configures the pin to behave either as an input or an output.
-  //
-  // Pin 4 refers to GPIO4.
-  pinMode(4, OUTPUT);
+  Serial.begin(9600);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
+  delay(100);
+
+  Serial.println("Setup done");
 }
 
 void loop()
 {
-  // If the pin is configured as OUTPUT, its voltage will be set to 5V or 3.3V
-  // on 3.3V boards (HIGH) or 0V (LOW).
-  //
-  // If the pin is configured as INPUT, this enables (HIGH) or disables (LOW)
-  // the internal pullup.
-  //
-  // An internal pull-up allows the hardware to reliably use, for instance, a
-  // switch between the pin and ground without an external resistor.
-  digitalWrite(4, HIGH);
+  Serial.println("Start scan");
 
-  delay(1000);
+  // WiFi.scanNetworks will return the number of networks found.
+  int networkCount = WiFi.scanNetworks();
+  Serial.println("Scan complete");
+  if (networkCount == 0)
+  {
+    Serial.println("No networks found");
+  }
+  else
+  {
+    for (int i = 0; i < networkCount; ++i)
+    {
+      Serial.printf("%d: %s (%d) %s\n",
+                    i + 1,
+                    WiFi.SSID(i),
+                    WiFi.RSSI(i),
+                    WiFi.encryptionType(i) == WIFI_AUTH_OPEN ? " " : "*");
+      delay(10);
+    }
+  }
+  Serial.println("");
 
-  // Subsequently, set the voltage at GPIO4 to LOW.
-  digitalWrite(4, LOW);
-
-  delay(1000);
+  delay(5000);
 }
